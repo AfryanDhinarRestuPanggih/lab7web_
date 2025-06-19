@@ -210,7 +210,7 @@ Dengan menyelesaikan praktikum ini, kita mendapatkan pemahaman yang lebih baik t
 ## Praktikum 2: Framework Lanjutan (CRUD)
 
 ***1.Membuat database:***
-Langkah Pertama membuat database
+·Langkah Pertama membuat database  
 
 ![Screenshot 2025-06-19 191846](https://github.com/user-attachments/assets/82132190-d535-48fb-8742-88004b92dc1e)
 ```
