@@ -228,6 +228,8 @@ CREATE TABLE article (
 ***2. Konfigurasi database***
 
 ![Screenshot 2025-06-19 193227](https://github.com/user-attachments/assets/7a2c8291-0b92-498b-ba5c-927de69d4d84)
+
 **Konfigurasi database pada CodeIgniter 4 dapat dilakukan melalui dua cara:**
+
 ·Langsung di file: app/Config/Database.php
 ·Menggunakan file: .env
