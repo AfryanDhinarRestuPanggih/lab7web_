@@ -206,3 +206,18 @@ Dari praktikum ini, kita telah memahami dasar-dasar penggunaan framework CodeIgn
 - Menggunakan CSS untuk mempercantik tampilan website.
 
 Dengan menyelesaikan praktikum ini, kita mendapatkan pemahaman yang lebih baik tentang bagaimana CodeIgniter 4 mempermudah pengembangan aplikasi berbasis web dengan struktur yang lebih terorganisir dan efisien. 🚀🔥
+
+## Praktikum 2: Framework Lanjutan (CRUD)
+Membuat database
+![Screenshot 2025-06-19 191846](https://github.com/user-attachments/assets/82132190-d535-48fb-8742-88004b92dc1e)
+
+CREATE DATABASE 6xatz;
+
+CREATE TABLE article (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    content TEXT,
+    image VARCHAR(200),
+    status TINYINT(1) DEFAULT 0,
+    slug VARCHAR(200) UNIQUE,
+);
