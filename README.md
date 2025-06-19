@@ -209,7 +209,8 @@ Dengan menyelesaikan praktikum ini, kita mendapatkan pemahaman yang lebih baik t
 
 ## Praktikum 2: Framework Lanjutan (CRUD)
 
-***Membuat database***
+***1.Membuat database:***
+Langkah Pertama membuat database
 
 ![Screenshot 2025-06-19 191846](https://github.com/user-attachments/assets/82132190-d535-48fb-8742-88004b92dc1e)
 ```
@@ -224,3 +225,9 @@ CREATE TABLE article (
     slug VARCHAR(200) UNIQUE,
 );
 ```
+***2. Konfigurasi database***
+
+![Screenshot 2025-06-19 193227](https://github.com/user-attachments/assets/7a2c8291-0b92-498b-ba5c-927de69d4d84)
+**Konfigurasi database pada CodeIgniter 4 dapat dilakukan melalui dua cara:**
+·Langsung di file: app/Config/Database.php
+·Menggunakan file: .env
