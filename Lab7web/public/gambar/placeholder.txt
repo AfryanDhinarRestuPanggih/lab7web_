@@ -1,0 +1,10 @@
+Direktori ini untuk menyimpan gambar artikel.
+
+Contoh file gambar yang bisa digunakan:
+- artikel1.jpg
+- artikel2.jpg
+- artikel3.jpg
+- tutorial-ci4.jpg
+- tips-programming.jpg
+
+Untuk testing, Anda bisa menambahkan file gambar dengan nama-nama tersebut.
