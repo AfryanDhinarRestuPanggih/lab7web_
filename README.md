@@ -210,6 +210,7 @@ Dengan menyelesaikan praktikum ini, kita mendapatkan pemahaman yang lebih baik t
 ## Praktikum 2: Framework Lanjutan (CRUD)
 
 ***1.Membuat database:***
+
 ·Langkah Pertama membuat database  
 
 ![Screenshot 2025-06-19 191846](https://github.com/user-attachments/assets/82132190-d535-48fb-8742-88004b92dc1e)
@@ -235,7 +236,8 @@ CREATE TABLE article (
 ·Menggunakan file: .env  
 
 ***3. Membuat Model***
-Buat file baru pada direktori app/Models dengan nama ArtikelModel.php
+
+Buat file baru pada direktori app/Models dengan nama ArtikelModel.php  
 ```
 <?php
 namespace App\Models;
@@ -253,7 +255,8 @@ protected $allowedFields = ['judul', 'isi', 'status', 'slug',
 ![Screenshot 2025-06-20 154731](https://github.com/user-attachments/assets/0e9c13fa-a306-4401-bf11-325bbffba313)
 
 ***5. Membuat Controller***
-Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.
+
+Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.  
 ```
 <?php
 
