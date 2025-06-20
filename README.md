@@ -233,3 +233,43 @@ CREATE TABLE article (
 
 ·Langsung di file: app/Config/Database.php  
 ·Menggunakan file: .env  
+
+***3. Membuat Model***
+Buat file baru pada direktori app/Models dengan nama ArtikelModel.php
+```
+<?php
+namespace App\Models;
+
+use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\Model;
+class ArtikelModel extends Model
+{
+protected $table = 'artikel';
+protected $primaryKey = 'id';
+protected $useAutoIncrement = true;
+protected $allowedFields = ['judul', 'isi', 'status', 'slug',
+'gambar'];
+```
+![Screenshot 2025-06-20 154731](https://github.com/user-attachments/assets/0e9c13fa-a306-4401-bf11-325bbffba313)
+
+***5. Membuat Controller***
+Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.
+```
+<?php
+
+namespace App\Controllers;
+
+use App\Models\ArtikelModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
+
+class Artikel extends BaseController
+{
+    public function index()
+    {
+        $title = 'Daftar Artikel';
+        $model = new ArtikelModel();
+        $artikel = $model->findAll();
+        return view('artikel/index', compact('artikel', 'title'));
+    }
+```
+![Screenshot 2025-06-20 154957](https://github.com/user-attachments/assets/958239bf-a764-4dea-a594-22c15f83d1c7)
