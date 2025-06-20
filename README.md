@@ -254,7 +254,7 @@ protected $allowedFields = ['judul', 'isi', 'status', 'slug',
 ```
 ![Screenshot 2025-06-20 154731](https://github.com/user-attachments/assets/0e9c13fa-a306-4401-bf11-325bbffba313)
 
-***5. Membuat Controller***
+***4. Membuat Controller***
 
 Buat Controller baru dengan nama Artikel.php pada direktori app/Controllers.  
 ```
@@ -276,3 +276,43 @@ class Artikel extends BaseController
     }
 ```
 ![Screenshot 2025-06-20 154957](https://github.com/user-attachments/assets/958239bf-a764-4dea-a594-22c15f83d1c7)
+
+***5. Membuat View***
+
+Buat direktori baru dengan nama artikel pada direktori app/views, kemudian buat file baru dengan nama index.php.  
+```
+<?= $this->include('template/header'); ?>
+
+<?php if ($artikel): foreach ($artikel as $row): ?>
+    <article class="entry">
+        <h2><a href="<?= base_url('/artikel/' . $row['slug']); ?>"><?= $row['judul']; ?></a></h2>
+        <img src="<?= base_url('/gambar/' . $row['gambar']); ?>" alt="<?= $row['judul']; ?>">
+        <p><?= substr($row['isi'], 0, 200); ?>...</p>
+    </article>
+    <hr class="divider" />
+<?php endforeach; else: ?>
+    <article class="entry">
+        <h2>Belum ada data.</h2>
+    </article>
+<?php endif; ?>
+
+<?= $this->include('template/footer'); ?>
+```
+![Screenshot 2025-06-20 155338](https://github.com/user-attachments/assets/fe80bccf-f266-44f3-a9cf-b4476146f5b5)
+
+***6. Akses dengan browser***
+   
+Selanjutnya buka browser kembali, dengan mengakses url http://localhost:8080/artikel  
+![Screenshot 2025-06-20 155445](https://github.com/user-attachments/assets/5942f8aa-4849-471d-9018-05fc3c024918)
+
+***7. Menambahkan Data Artikel***
+
+Belum ada data yang ditampilkan. Kemudian coba tambahkan beberapa data pada database agar dapat ditampilkan datanya.  
+```
+INSERT INTO artikel (judul, isi, slug) VALUE
+('Artikel pertama', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.', 'artikel-pertama'),
+('Artikel kedua', 'Tidak seperti anggapan banyak orang, Lorem Ipsum bukanlah teks-teks yang diacak. Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun.', 'artikel-kedua');
+```
+![Screenshot 2025-06-20 155753](https://github.com/user-attachments/assets/26437c91-8774-4b4c-a61b-015e1a884b3d)
+
+
