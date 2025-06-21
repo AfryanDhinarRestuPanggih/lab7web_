@@ -541,3 +541,8 @@ public function delete($id)
     return redirect('admin/artikel');
 }
 ```
+
+## Praktikum 3: View Layout dan View Cell
+
+**1. Membuat Layout Utama**
+Buat folder layout di dalam app/Views/ Buat file main.php di dalam folder layout dengan kode berikut:  
