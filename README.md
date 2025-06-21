@@ -717,3 +717,29 @@ else : ?>
 <?= $this->include('template/footer'); ?>
 ```
 ![Screenshot 2025-06-21 105424](https://github.com/user-attachments/assets/a01dbcca-3a84-4df7-bc5f-274b4a8cd03e)
+
+## Apa manfaat utama dari penggunaan View Layout dalam pengembangan aplikasi?
+
+**Jawaban:**
+
+1. **Struktur yang Terorganisir**  
+   Memudahkan pengaturan elemen UI dengan tata letak yang rapi dan terstruktur.
+
+2. **Responsivitas yang Lebih Baik**  
+   Memastikan tampilan UI menyesuaikan dengan berbagai ukuran layar dan orientasi perangkat.
+
+3. **Pemeliharaan Kode yang Lebih Mudah**  
+   Dengan pemisahan tata letak dan logika bisnis, perubahan UI lebih mudah dilakukan tanpa mengganggu fungsionalitas aplikasi.
+
+4. **Penggunaan Ulang Komponen**  
+   Layout dapat digunakan kembali di berbagai bagian aplikasi, mengurangi redundansi kode.
+
+5. **Kinerja yang Lebih Optimal**  
+   Beberapa jenis layout dioptimalkan untuk performa yang lebih baik, seperti `ConstraintLayout` di Android yang mengurangi jumlah view hierarchy.
+
+---
+
+## Jelaskan perbedaan antara View Cell dan View biasa.
+
+**Jawaban:**
+![Screenshot 2025-06-21 113209](https://github.com/user-attachments/assets/2e36d5e5-f08c-420c-aa63-8a6d58b18f8c)
