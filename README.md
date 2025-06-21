@@ -601,3 +601,119 @@ nunc pretium ac.</p>
 </html>
 ```
 ![Screenshot 2025-06-21 102520](https://github.com/user-attachments/assets/680350dd-3b66-4583-9a22-8507e72b1c88)
+
+**2. Modifikasi File View**
+Ubah app/Views/home.php agar sesuai dengan layout baru:  
+```
+<?= $this->extend('layout/main') ?>
+<?= $this->section('content') ?>
+    <h1><?= $title; ?></h1>
+    <hr>
+    <p><?= $content; ?></p>
+<?= $this->endSection() ?>
+```
+![Screenshot 2025-06-21 103233](https://github.com/user-attachments/assets/e4a6fd99-e45e-4d71-9965-9fb94c4b362e)
+
+**3. Membuat Class View Cell**
+Buat folder Cells di dalam app/ Buat file ArtikelTerkini.php di dalam app/Cells/ dengan kode berikut:  
+![Screenshot 2025-06-21 103629](https://github.com/user-attachments/assets/0f5f8f8a-044e-4216-b077-773d50ad1f0b)
+
+**4. Membuat View untuk View Cell**
+Buat folder components di dalam app/Views/ Buat file artikel_terkini.php di dalam app/Views/components/ dengan kode berikut:  
+![Screenshot 2025-06-21 103846](https://github.com/user-attachments/assets/1394caec-aa95-44ff-a0cd-fb758a1b6a51)
+
+**5. Modifikasi Database: Menambahkan Field created_at**
+Untuk menampilkan artikel terkini berdasarkan tanggal, kita perlu menambahkan field created_at pada tabel artikel:  
+```
+ALTER TABLE artikel
+ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+```
+
+**6. Update Data Artikel dengan Tanggal**
+Untuk artikel yang sudah ada, kita perlu mengupdate field created_at:  
+```
+UPDATE artikel SET created_at = CURRENT_TIMESTAMP;
+```
+
+**7. Modifikasi Model ArtikelModel**
+Update file app/Models/ArtikelModel.php untuk menambahkan field created_at di allowedFields:  
+```
+<?php
+namespace App\Models;
+use CodeIgniter\Model;
+
+class ArtikelModel extends Model
+{
+    protected $table = 'artikel';
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
+    protected $allowedFields = ['judul', 'isi', 'status', 'slug', 'gambar', 'created_at'];
+}
+```
+**8. Modifikasi Controller untuk Menampilkan Halaman Home dengan Layout Baru**
+Update file app/Controllers/Home.php:  
+```
+<?php
+
+namespace App\Controllers;
+
+use App\Models\ArtikelModel;
+
+class Home extends BaseController
+{
+    public function index()
+    {
+        $title = 'Beranda';
+        $model = new ArtikelModel();
+
+        // Ambil semua artikel
+        $artikel = $model->orderBy('tanggal', 'DESC')->findAll();
+
+        // Ambil 3 artikel terkini
+        $artikel_terkini = $model->orderBy('tanggal', 'DESC')->findAll(3);
+
+        // Kirim ke view
+        return view('home', compact('artikel', 'artikel_terkini', 'title'));
+    }
+}
+```
+
+**9. Modifikasi View Artikel**
+Ubah file app/Views/artikel/index.php agar menggunakan layout baru:  
+```
+<?= $this->include('template/header'); ?>
+
+<link rel="stylesheet" href="<?= base_url('css/style.css'); ?>">
+
+<!-- Tombol Tambah Artikel (Untuk Admin) -->
+<div style="margin-bottom: 20px;">
+    <a href="<?= base_url('/admin/artikel/add'); ?>" class="tambah-artikel-btn">
+        + Tambah Artikel
+    </a>
+</div>
+
+<!-- ARTIKEL TERKINI dari Cell -->
+<?= view_cell('App\Cells\ArtikelTerkini::index') ?>
+
+<hr class="divider" />
+
+<!-- SEMUA ARTIKEL -->
+<?php if ($artikel) : foreach ($artikel as $row) : ?>
+        <article class="entry">
+            <h2>
+                <a href="<?= base_url('/artikel/' . $row['slug']); ?>"><?= esc($row['judul']); ?></a>
+            </h2>
+            <img src="<?= base_url('/gambar/' . $row['gambar']); ?>" alt="<?= esc($row['judul']); ?>" style="width: 100%; max-width: 400px;">
+            <p><?= esc(substr($row['isi'], 0, 200)); ?>...</p>
+        </article>
+        <hr class="divider" />
+    <?php endforeach;
+else : ?>
+    <article class="entry">
+        <h2>Belum ada data.</h2>
+    </article>
+<?php endif; ?>
+
+<?= $this->include('template/footer'); ?>
+```
+![Screenshot 2025-06-21 105424](https://github.com/user-attachments/assets/a01dbcca-3a84-4df7-bc5f-274b4a8cd03e)
