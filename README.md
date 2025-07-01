@@ -93,7 +93,7 @@ php spark
 Untuk mempermudah debugging, aktifkan mode development dengan mengubah file .env:
 
 bash
-# Buka file .env dan ubah:
+## Buka file .env dan ubah:
 CI_ENVIRONMENT = development
 
 
