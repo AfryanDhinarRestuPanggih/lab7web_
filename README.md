@@ -75,11 +75,11 @@ Untuk memulai, kita perlu mengunduh dan menyiapkan CodeIgniter 4 pada server lok
 ### 📌 3. Menjalankan Command Line Interface (CLI)
 
 CodeIgniter memiliki CLI yang mempermudah pengembangan aplikasi. Untuk menjalankan CLI:
-
+```
 bash
 cd xampp/htdocs/lab11_ci/ci4/
 php spark
-
+```
 
 📷 *Screenshot Hasil Perintah CLI:*
 
@@ -89,13 +89,14 @@ php spark
 ---
 
 ### 📌 4. Mengaktifkan Mode Debugging
-
 Untuk mempermudah debugging, aktifkan mode development dengan mengubah file .env:
-
+```
 bash
+```
 ## Buka file .env dan ubah:
+```
 CI_ENVIRONMENT = development
-
+```
 
 📷 *Screenshot Konfigurasi Debugging:*
 
@@ -105,20 +106,19 @@ CI_ENVIRONMENT = development
 ---
 
 ### 📌 5. Menambahkan Routing Baru
-
-Routing digunakan untuk mengatur alamat URL yang akan diproses oleh aplikasi. Tambahkan kode berikut di app/Config/Routes.php:
-
+Routing digunakan untuk mengatur alamat URL yang akan diproses oleh aplikasi. Tambahkan kode berikut di app/Config/Routes.php:  
+```
 php
 $routes->get('/about', 'Page::about');
 $routes->get('/contact', 'Page::contact');
 $routes->get('/faqs', 'Page::faqs');
+```
 
-
-Jalankan perintah berikut untuk melihat daftar routing yang telah dibuat:
-
+Jalankan perintah berikut untuk melihat daftar routing yang telah dibuat:  
+```
 bash
 php spark routes
-
+```
 
 📷 *Screenshot CLI & Error Page:*
 
@@ -128,9 +128,8 @@ php spark routes
 ---
 
 ### 📌 6. Membuat Controller Page
-
-Buat file Page.php di app/Controllers/ dengan isi sebagai berikut:
-
+Buat file Page.php di app/Controllers/ dengan isi sebagai berikut:  
+```
 php
 <?php
 namespace App\Controllers;
@@ -139,9 +138,9 @@ class Page extends BaseController {
     public function contact() { echo "Ini halaman Contact"; }
     public function faqs() { echo "Ini halaman FAQ"; }
 }
+```
 
-
-📷 *Screenshot Tampilan About Page:*
+📷 *Screenshot Tampilan About Page:*  
 
 ![7](https://github.com/user-attachments/assets/ed5d30cc-6461-4c5f-ade9-80b820a41586)
 
@@ -150,8 +149,8 @@ class Page extends BaseController {
 
 ### 📌 7. Membuat View untuk Halaman About
 
-Buat file app/Views/about.php dengan kode berikut:
-
+Buat file app/Views/about.php dengan kode berikut:  
+```
 php
 <!DOCTYPE html>
 <html>
@@ -163,9 +162,9 @@ php
     <p><?= $content; ?></p>
 </body>
 </html>
+```
 
-
-📷 *Screenshot Tampilan View About Page:*
+📷 *Screenshot Tampilan View About Page:*  
 
 ![8](https://github.com/user-attachments/assets/089e84ce-ff91-4b64-bd24-52ad9ac387cd)
 
@@ -174,20 +173,20 @@ php
 
 ### 📌 8. Menambahkan Layout Web dengan CSS
 
-Untuk meningkatkan tampilan website, kita akan menggunakan template header dan footer:
+Untuk meningkatkan tampilan website, kita akan menggunakan template header dan footer:  
 
 1. Simpan file style.css di public/
 2. Buat file header.php dan footer.php di app/Views/template/
 3. Ubah about.php agar menggunakan include:
-
+```
 php
 <?= $this->include('template/header'); ?>
 <h1><?= $title; ?></h1>
 <p><?= $content; ?></p>
 <?= $this->include('template/footer'); ?>
+```
 
-
-📷 *Screenshot Tampilan dengan Template:*
+📷 *Screenshot Tampilan dengan Template:*  
 
 ![9](https://github.com/user-attachments/assets/ece7ce51-7a28-474c-967c-fa0da2259aa4)
 
